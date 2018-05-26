@@ -2,7 +2,9 @@ cmake_minimum_required (VERSION 3.9)
 
 project (c_coupler CXX Fortran)
 
-set (CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffree-line-length-none")
+if ("${CMAKE_Fortran_COMPILER_ID}" STREQUAL "GNU")
+  set (CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -ffree-line-length-none")
+endif ()
 
 find_package (MPI)
 include_directories (${MPI_CXX_INCLUDE_DIRS})
